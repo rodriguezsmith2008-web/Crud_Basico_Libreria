@@ -1,5 +1,9 @@
 package com.Jhoan.CrudLibreriaChenao.dto;
 
-public class LIbroMessage {
-    
+import lombok.Data;
+
+@Data
+public class LibroMessage<T> {
+    private T data;
+    private String message;
 }

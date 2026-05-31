@@ -13,4 +13,21 @@ public enum EstadoEnum {
     public Long getId() {
         return id;
     }
+
+     public static Long disponible() {
+        return Disponible.getId();
+    }
+
+    public static Long prestado() {
+        return Prestado.getId();
+    }
+
+    public static String getNombre(Long id) {
+    for (EstadoEnum estado : EstadoEnum.values()) {
+        if (estado.getId().equals(id)) {
+            return estado.name();
+        }
+    }
+    return null;
+}
 }
