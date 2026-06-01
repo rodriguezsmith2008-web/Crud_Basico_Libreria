@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Actualizar Libro</title>
+    <link rel="stylesheet" th:href="@{/css/actualizar.css}" />
+</head>
+<body>
+    <header>
+        <h1>Librería Chenao</h1>
+        <a href="/libros" class="back">← Volver</a>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>Actualizar Libro</h2>
+            <p class="sub" th:text="'Editando: ' + ${titulo}">Editando: Título</p>
+
+            <form th:action="@{/libros/actualizar/{t}(t=${titulo})}" th:object="${libro}" method="post">
+                <div class="field">
+                    <label>Título</label>
+                    <input type="text" th:field="*{titulo}" />
+                    <p class="hint">Dejar vacío para no cambiar</p>
+                </div>
+                <div class="field">
+                    <label>Autor</label>
+                    <input type="text" th:field="*{autor}" />
+                </div>
+                <div class="field">
+                    <label>Fecha de Publicación</label>
+                    <input type="date" th:field="*{fechaPublicacion}" />
+                </div>
+                <button type="submit" class="btn-submit">Guardar Cambios</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

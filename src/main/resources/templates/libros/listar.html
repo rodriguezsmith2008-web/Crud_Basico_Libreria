@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Librería Chenao</title>
+    <link rel="stylesheet" th:href="@{/css/listar.css}" />
+</head>
+<body>
+    <header>
+        <h1>Librería Chenao</h1>
+        <nav>
+            <a href="/libros/crear" class="btn-verde">+ Agregar</a>
+            <a href="/libros/buscar" class="btn-azul">Buscar</a>
+        </nav>
+    </header>
+
+    <main>
+        <table th:if="${#lists.size(libros) > 0}">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Fecha Publicación</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="libro : ${libros}">
+                    <td th:text="${libro.titulo}">Título</td>
+                    <td th:text="${libro.autor}">Autor</td>
+                    <td th:text="${libro.fechaPublicacion}">Fecha</td>
+                    <td>
+                        <span th:if="${libro.estado == 'Disponible'}" class="badge disponible">Disponible</span>
+                        <span th:if="${libro.estado == 'Prestado'}" class="badge prestado">Prestado</span>
+                    </td>
+                    <td>
+                        <div class="acciones">
+                            <a th:href="@{/libros/actualizar/{t}(t=${libro.titulo})}" class="btn btn-editar">Editar</a>
+                            <a th:if="${libro.estado == 'Disponible'}" th:href="@{/libros/prestar/{t}(t=${libro.titulo})}" class="btn btn-prestar">Prestar</a>
+                            <a th:if="${libro.estado == 'Prestado'}" th:href="@{/libros/devolver/{t}(t=${libro.titulo})}" class="btn btn-devolver">Devolver</a>
+                            <a th:href="@{/libros/eliminar/{t}(t=${libro.titulo})}" class="btn btn-eliminar">Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="empty" th:if="${#lists.size(libros) == 0}">
+            No hay libros registrados aún.
+        </div>
+    </main>
+</body>
+</html>

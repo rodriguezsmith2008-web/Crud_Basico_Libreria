@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Libro</title>
+    <link rel="stylesheet" th:href="@{/css/crear.css}" />
+</head>
+<body>
+    <header>
+        <h1>Librería Chenao</h1>
+        <a href="/libros" class="back">← Volver</a>
+    </header>
+ 
+    <main>
+        <div class="card">
+            <h2>Agregar Libro</h2>
+            <form th:action="@{/libros/crear}" th:object="${libro}" method="post">
+                <div class="field">
+                    <label>Título</label>
+                    <input type="text" th:field="*{titulo}" required />
+                </div>
+                <div class="field">
+                    <label>Autor</label>
+                    <input type="text" th:field="*{autor}" required />
+                </div>
+                <div class="field">
+                    <label>Fecha de Publicación</label>
+                    <input type="date" th:field="*{fechaPublicacion}" required />
+                </div>
+                <button type="submit" class="btn-submit">Guardar</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

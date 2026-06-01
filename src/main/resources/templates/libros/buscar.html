@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Libro</title>
+    <link rel="stylesheet" th:href="@{/css/crear.css}" />
+</head>
+<body>
+    <header>
+        <h1>Librería Chenao</h1>
+        <nav>
+            <a href="/libros" class="back">← Volver al catálogo</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>Buscar Libro</h2>
+            <!-- El form redirige a /libros/buscar/{titulo} via JS -->
+            <div class="field">
+                <label>Título del libro</label>
+                <input type="text" id="tituloBuscar" placeholder="Ej: Cien años de soledad" />
+            </div>
+            <button class="btn-submit" onclick="buscar()">Buscar</button>
+        </div>
+    </main>
+
+    <script>
+        function buscar() {
+            var titulo = document.getElementById('tituloBuscar').value.trim();
+            if (titulo) {
+                window.location.href = '/libros/buscar/' + encodeURIComponent(titulo);
+            }
+        }
+        document.getElementById('tituloBuscar').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') buscar();
+        });
+    </script>
+</body>
+</html>
