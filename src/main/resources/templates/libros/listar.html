@@ -8,9 +8,12 @@
 <body>
     <header>
         <h1>Librería Chenao</h1>
-        <a href="/libros/crear" class="btn-verde">+ Agregar Libro</a>
+        <nav>
+            <a href="/libros/crear" class="btn-verde">+ Agregar</a>
+            <a href="/libros/buscar" class="btn-azul">Buscar</a>
+        </nav>
     </header>
- 
+
     <main>
         <table th:if="${#lists.size(libros) > 0}">
             <thead>
@@ -42,7 +45,7 @@
                 </tr>
             </tbody>
         </table>
- 
+
         <div class="empty" th:if="${#lists.size(libros) == 0}">
             No hay libros registrados aún.
         </div>
