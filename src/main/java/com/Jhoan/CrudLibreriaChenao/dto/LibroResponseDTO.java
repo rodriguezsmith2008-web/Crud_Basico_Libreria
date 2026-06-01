@@ -10,5 +10,5 @@ public class LibroResponseDTO {
     private String titulo;
     private String autor;
     private LocalDate fechaPublicacion;
-    private String estado; 
+    private String estado;
 }
