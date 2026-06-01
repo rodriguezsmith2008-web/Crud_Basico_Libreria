@@ -13,6 +13,6 @@ import com.Jhoan.CrudLibreriaChenao.entity.LibroEntity;
 @Repository
 public interface LibroRepository extends JpaRepository<LibroEntity, Long> {
 
-    boolean exexistsBytitle(String name);
+    boolean existsByTitulo(String titulo);
     Optional<LibroEntity> findByTitulo(String titulo);
 }

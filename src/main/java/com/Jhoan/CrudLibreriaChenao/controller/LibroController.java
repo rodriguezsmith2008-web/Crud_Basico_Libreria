@@ -76,4 +76,11 @@ public class LibroController {
         model.addAttribute("libro", libroService.buscarLibro(titulo));
         return "libros/detalle";
     }
+
+    @GetMapping("/buscar")
+public String formularioBuscar() {
+    return "libros/buscar";
+}
+
+
 }

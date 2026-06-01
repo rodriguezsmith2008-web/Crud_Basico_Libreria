@@ -23,7 +23,7 @@ public class LibroService {
 
     public LibroMessage<LibroRequestDTO> ingresarLibro(LibroRequestDTO libro) {
         LibroMessage<LibroRequestDTO> response = new LibroMessage<>();
-        boolean optional = libroRepository.exexistsBytitle(libro.getTitulo());
+        boolean optional = libroRepository.existsByTitulo(libro.getTitulo());
         if (optional) {
             response.setMessage("El libro ya esta ingresado en la plataforma");
             return response;
@@ -83,23 +83,17 @@ public class LibroService {
 
         LibroEntity libro = actualizar.get();
 
-        if (libro.getEstado().equals(EstadoEnum.prestado())) {
-            response.setMessage("En estos momento el libro se encuentra prestado no se puede actualizar");
-            return response;
-        }
-
-        if (reques.getTitulo() != null) {
+        if (reques.getTitulo() != null && !reques.getTitulo().isEmpty()) {
             libro.setTitulo(reques.getTitulo());
         }
 
-        if (reques.getAutor() != null) {
+        if (reques.getAutor() != null && !reques.getAutor().isEmpty()) {
             libro.setAutor(reques.getAutor());
         }
 
         if (reques.getFechaPublicacion() != null) {
             libro.setFechaPublicacion(reques.getFechaPublicacion());
         }
-
         libroRepository.save(libro);
         response.setMessage("Libro actualizado exitosamente");
         return response;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle Libro</title>
+    <link rel="stylesheet" th:href="@{/css/listar.css}" />
+</head>
+<body>
+    <header>
+        <h1>Librería Chenao</h1>
+        <a href="/libros" class="back">← Volver</a>
+    </header>
+
+    <main style="padding: 2rem;">
+
+        <div class="detalle-card" th:if="${libro != null}">
+            <h2 th:text="${libro.titulo}">Título</h2>
+            <div class="campo">
+                <label>Autor</label>
+                <span th:text="${libro.autor}">Autor</span>
+            </div>
+            <div class="campo">
+                <label>Fecha de Publicación</label>
+                <span th:text="${libro.fechaPublicacion}">Fecha</span>
+            </div>
+            <div class="campo">
+                <label>Estado</label>
+                <span th:if="${libro.estado == 'Disponible'}" class="badge disponible">Disponible</span>
+                <span th:if="${libro.estado == 'Prestado'}" class="badge prestado">Prestado</span>
+            </div>
+        </div>
+
+        <div class="no-encontrado" th:if="${libro == null}">
+            No se encontró ningún libro con ese título.
+        </div>
+
+    </main>
+</body>
+</html>

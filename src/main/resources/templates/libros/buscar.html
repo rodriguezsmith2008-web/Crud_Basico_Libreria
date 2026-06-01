@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Libro</title>
+    <link rel="stylesheet" th:href="@{/css/crear.css}" />
+</head>
+<body>
+    <header>
+        <h1>Librería Chenao</h1>
+        <a href="/libros" class="back">← Volver</a>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>Buscar Libro</h2>
+
+            <form action="/libros/buscar" method="get">
+                <div class="field">
+                    <label>Título del libro</label>
+                    <input type="text" name="titulo" placeholder="Ej: Cien años de soledad" required />
+                </div>
+                <button type="submit" class="btn-submit">Buscar</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
